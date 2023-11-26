@@ -1,0 +1,57 @@
+# This snakemake will not run
+
+containers = {
+    "star": "docker://quay.io/biocontainers/star:2.7.5c--0"
+}
+
+rule all_expression:
+    input:
+        count_fragments_per_gene=expand("{sample}/expression/ReadsPerGene.out.tab", sample=config["samples"])
+
+rule count_fragments_per_gene:
+    input:
+        fq1="{sample}/{sample}-R1.fq.gz",
+        fq2="{sample}/{sample}-R2.fq.gz",
+        genomeDir=settings["genomeDir"], # GDC.h38.d1.vd1 STAR2 Index Files (v36)
+        gtf=settings["gtf"], # GDC.h38 GENCODE v36 GTF
+    output:
+        bam=temp("{sample}/Aligned.out.bam"),
+        gene_count="{sample}/ReadsPerGene.out.tab",
+    params:
+        rg_sample=lambda wildcards: wildcards.sample,
+    threads: 12
+    singularity: containers["star"]
+    shell:
+        """
+        STAR \
+            --readFilesIn {input.fq1} {input.fq2} \
+            --outSAMattrRGline ID:{params.rg_sample} \
+            --genomeDir {input.genomeDir} \
+            --sjdbGTFfile {input.gtf} \
+            --readFilesCommand zcat \
+            --runThreadN {threads} \
+            --twopassMode Basic \
+            --alignIntronMax 1000000 \
+            --alignIntronMin 20 \
+            --alignMatesGapMax 1000000 \
+            --alignSJDBoverhangMin 1 \
+            --alignSJoverhangMin 8 \
+            --alignSoftClipAtReferenceEnds Yes \
+            --chimJunctionOverhangMin 15 \
+            --chimMainSegmentMultNmax 1 \
+            --chimSegmentMin 15 \
+            --genomeLoad NoSharedMemory \
+            --limitSjdbInsertNsj 1200000 \
+            --outFileNamePrefix $(dirname {output.bam})/ \
+            --outFilterIntronMotifs None \
+            --outFilterMatchNminOverLread 0.33 \
+            --outFilterMismatchNmax 999 \
+            --outFilterMismatchNoverLmax 0.1 \
+            --outFilterMultimapNmax 20 \
+            --outFilterScoreMinOverLread 0.33 \
+            --outFilterType BySJout \
+            --outSAMattributes NH HI AS nM NM ch \
+            --outSAMstrandField intronMotif \
+            --outSAMtype BAM Unsorted \
+            --quantMode GeneCounts 
+        """
