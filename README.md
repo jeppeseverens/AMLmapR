@@ -15,7 +15,7 @@ install_github("jeppeseverens/AMLmapR")
 Then you can predict the transcriptional subtypes for your AML cases. __Important__: do not normalise or log transform counts. 
 ```R
 library(AMLmapR)
-predictions <- predict_AML_clusters(matrix)
+predictions <- predict_AML_clusters(example_matrix)
 ```
 ### How to cite
 If you used this work for a publication, please reference: "paper reference" 
