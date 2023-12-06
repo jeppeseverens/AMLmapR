@@ -60,5 +60,6 @@ predict_AML_clusters <- function(matrix){
   out <- pred_clusters(X, d)
   rownames(out) <- rownames(matrix)
   out$sample_id <- rownames(matrix)
+    cat("Done!\n")
   return(out)
 }
