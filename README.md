@@ -24,8 +24,9 @@ example_matrix <- AMLmapR::example_matrix
 predictions <- predict_AML_clusters(example_matrix)
 ```
 ### How to cite
-If you used this work for a publication, please reference: "paper reference" 
-
+If you used this work for a publication, please reference our publication: 
+Mapping AML heterogeneity - multi-cohort transcriptomic analysis identifies novel clusters and divergent ex-vivo drug responses
+https://www.nature.com/articles/s41375-024-02137-6
 ### Contact
 Jeppe Severens - PhD student at Leiden University Medical Center, the Netherlands
 Mail: jeppe.severens@gmail.com
