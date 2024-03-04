@@ -25,6 +25,7 @@ predictions <- predict_AML_clusters(example_matrix)
 ```
 ### How to cite
 If you used this work for a publication, please reference our publication: 
+
 Mapping AML heterogeneity - multi-cohort transcriptomic analysis identifies novel clusters and divergent ex-vivo drug responses
 https://www.nature.com/articles/s41375-024-02137-6
 ### Contact
