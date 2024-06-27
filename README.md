@@ -28,6 +28,13 @@ If you used this work for a publication, please reference my publication:
 
 Mapping AML heterogeneity - multi-cohort transcriptomic analysis identifies novel clusters and divergent ex-vivo drug responses
 https://www.nature.com/articles/s41375-024-02137-6
+
+### License
+This work is available under the CC BY-NC-SA 4.0 license.
+You can share and addapt this work, as longs as you give appropiate credit.
+If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original. 
+Publication of this work is meant to contribute to open scientific research. You may not use the material for commercial purposes.
+
 ### Contact
 Jeppe Severens - the Netherlands
 Mail: jeppe.severens@gmail.com
