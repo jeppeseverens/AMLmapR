@@ -9,6 +9,7 @@ Merge the _ReadsPerGene.out.tab_ files into a matrix with samples on the rows an
 First install the package.
 ```R
 library(devtools)
+install.package("caret")
 install_github("jeppeseverens/AMLmapR")
 ```
 
